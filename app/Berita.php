@@ -13,7 +13,7 @@ class Berita extends Model
     const CREATED_AT = 'insert_date';
     const UPDATED_AT = 'update_date';
 
-    public function users()
+    public function masjids()
     {
         return $this->belongsTo('App\Masjid', 'masjid_id');
     }

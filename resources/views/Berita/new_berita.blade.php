@@ -33,7 +33,7 @@
                   </div>
                    <div class="form-group">
                     <label for="exampleInputEmail1">Kategori</label>
-                   {{ Form::select('kategori_berita',['Pengumuman'=>'Pengumuman','Program Masjid'=>'Program Masjid','Laporan Keuangan'=>'Laporan Keuangan','Perancanaan Pembangunan'=>'Perancanaan Pembangunan'], Input::old('kategori_berita'),['class'=>'form-control','name'=>'kategori_berita']) }}
+                   {{ Form::select('kategori_berita',$kategori, Input::old('kategori_berita'),['class'=>'form-control','name'=>'kategori_berita']) }}
                   </div>
                    <div class="form-group">
                     <label for="exampleInputEmail1">Deskripsi</label>

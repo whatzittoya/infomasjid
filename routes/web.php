@@ -30,6 +30,8 @@ Route::middleware('auth', 'role:admin')->prefix('admin')->group(function () {
     Route::resource('masjid', 'MasjidController');
     Route::resource('takmir', 'TakmirController');
     Route::post('takmir/reset/{id}', 'TakmirController@resetPassword')->name('takmir.reset');
+    Route::resource('berita/all', 'BeritaController', ['names' => 'beritaall']);
+    Route::resource('kategori', 'KategoriController');
     //Route::resource('users', 'UserController');
 });
 

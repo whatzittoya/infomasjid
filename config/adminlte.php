@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>Info</b>Masjid',
-    'logo_img' => 'logosayapeduli.png',
+    'logo_img' => 'logoicon.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -249,7 +249,7 @@ return [
         ],
         [
             'text'        => 'Berita',
-            'url'         => 'admin/berita',
+            'route'         => 'beritaall.index',
             'icon'        => 'far fa-fw fa-file',
             'can'         => 'admin',
         ],
@@ -265,7 +265,12 @@ return [
             'icon'        => 'far fa-fw fa-file',
             'can'         => 'takmir',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Settings'],
+        [
+            'text' => 'Kategori Berita',
+            'route'  => 'kategori.index',
+            'icon' => 'fas fa-fw fa-file',
+        ],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',

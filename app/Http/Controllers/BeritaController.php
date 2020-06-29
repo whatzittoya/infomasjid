@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Berita;
+use App\Kategori;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,10 +21,17 @@ class BeritaController extends Controller
 
         if (Auth::user()->isTakmir()) {
             $masjid_id = Auth::user()->masjids->first()->masjid_id;
-        }
-        $berita = Berita::where('masjid_id', $masjid_id)->orderby('tgl_berita', 'desc')->get();
 
-        return view('berita.berita', ['berita' => $berita]);
+            $berita = Berita::where('masjid_id', $masjid_id)->with('masjids')->orderby('tgl_berita', 'desc')->get();
+            $baseroute = 'berita';
+            $breadcrumb = 'takmir_berita';
+        } else {
+            $berita = Berita::with('masjids')->get();
+            $baseroute = 'beritaall';
+            $breadcrumb = 'admin_berita';
+        }
+
+        return view('berita.berita', ['berita' => $berita, 'baseroute' => $baseroute, 'breadcrumb' => $breadcrumb]);
     }
 
     /**
@@ -34,7 +42,9 @@ class BeritaController extends Controller
     public function create()
     {
         //
-        return view('berita.new_berita');
+        $kategori = Kategori::get();
+        $kategori = $kategori->pluck('nama', 'nama')->toArray();
+        return view('berita.new_berita', ['kategori' => $kategori]);
     }
 
     /**
@@ -87,7 +97,15 @@ class BeritaController extends Controller
     public function show(Berita $berita, $id)
     {
         $berita = Berita::find($id);
-        return view('berita.detail_berita', ['berita' => $berita]);
+        if (Auth::user()->isTakmir()) {
+
+            $breadcrumb = 'takmir_view_berita';
+        } else {
+
+            $breadcrumb = 'admin_view_berita';
+        }
+
+        return view('berita.detail_berita', ['berita' => $berita, 'breadcrumb' => $breadcrumb]);
     }
 
     /**
@@ -99,7 +117,9 @@ class BeritaController extends Controller
     public function edit(Berita $berita, $id)
     {
         $berita = Berita::find($id);
-        return view('berita.new_berita', ['berita' => $berita]);
+        $kategori = Kategori::get();
+        $kategori = $kategori->pluck('nama', 'nama')->toArray();
+        return view('berita.new_berita', ['berita' => $berita, 'kategori' => $kategori]);
     }
 
     /**
