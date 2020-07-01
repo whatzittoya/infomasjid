@@ -16,7 +16,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $berita = Masjid::select('masjid_id', 'nama')->with('berita')->get();
+        $berita = Berita::select('berita_id', 'judul', 'tgl_berita', 'masjid_id')->with('masjids:masjid_id,nama')->get();
         return response()->json($berita, 200);
     }
 
@@ -47,9 +47,10 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita $berita)
+    public function show(Berita $berita, $id)
     {
-        //
+        $berita = Berita::with('masjids:masjid_id,nama')->find($id);
+        return response()->json($berita, 200);
     }
 
     /**
