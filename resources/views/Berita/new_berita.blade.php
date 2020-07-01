@@ -48,7 +48,7 @@
                         </div>
                      <div class="custom-file">
                      
-                        <input type="file" class="custom-file-input" id="exampleInputFile" name="dokumen_berita">
+                        <input type="file" class="custom-file-input" id="exampleInputFile" name="dokumen_berita" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|text/plain,.pdf,.doc,.docx">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                   </div>

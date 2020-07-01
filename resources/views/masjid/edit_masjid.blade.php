@@ -14,6 +14,11 @@
  @elseif(Auth::user()->isTakmir())
 {{ Breadcrumbs::render('takmir_edit_masjid',$masjid) }}
 @endif
+@if ($errors->any())
+     @foreach ($errors->all() as $error)
+         <li><label class="text-danger">{{$error}}</label></li>
+     @endforeach
+ @endif
     <div class=" container-fluid">
         <div class="col-md-12">
             <div class="card card-default">
@@ -26,23 +31,23 @@
                 <div class="card-body"> 
                   <div class="form-group">
                     <label for="nama">Nama Masjid</label>
-                   {{ Form::text('nama', Input::old('nama'),['class'=>'form-control','placeholder'=>'Nama Masjid','name'=>'nama_masjid']) }}
+                   {{ Form::text('nama', Input::old('nama'),['class'=>'form-control','placeholder'=>'Nama Masjid','name'=>'nama']) }}
                   </div>
                   <div class="form-group">
                     <label for="alamat">Alamat</label>
-                    {{ Form::text('alamat', Input::old('alamat'),['class'=>'form-control','placeholder'=>'Alamat','name'=>'alamat_masjid']) }}
+                    {{ Form::text('alamat', Input::old('alamat'),['class'=>'form-control','placeholder'=>'Alamat','name'=>'alamat']) }}
                   </div>
                    <div class="form-group">
                     <label for="geotag">GeoTag</label>
-                    {{ Form::text('geotag', Input::old('geotag'),['class'=>'form-control','placeholder'=>'Geotag','name'=>'geotag_masjid']) }}
+                    {{ Form::text('geotag', Input::old('geotag'),['class'=>'form-control','placeholder'=>'Geotag','name'=>'geotag']) }}
                   </div>
                   <div class="form-group">
                     <label for="norek">No Rekening</label>
-                    {{ Form::text('norek', Input::old('norek'),['class'=>'form-control','placeholder'=>'No Rekening','name'=>'norek_masjid']) }}
+                    {{ Form::text('norek', Input::old('norek'),['class'=>'form-control','placeholder'=>'No Rekening','name'=>'norek']) }}
                   </div>
                   <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
-                    {{ Form::textarea('deskripsi', Input::old('deskripsi'),['class'=>'form-control','placeholder'=>'Deskripsi','name'=>'deskripsi_masjid']) }}
+                    {{ Form::textarea('deskripsi', Input::old('deskripsi'),['class'=>'form-control','placeholder'=>'Deskripsi','name'=>'deskripsi']) }}
                   </div>
                   <div class="form-group">
                       
@@ -53,7 +58,7 @@
                     @endif
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile" name="foto_masjid">
+                        <input type="file" class="custom-file-input" id="exampleInputFile" name="foto" accept="image/*">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                   </div>

@@ -116,13 +116,13 @@ class MasjidController extends Controller
      */
     public function globalUpdate(Request $request, Masjid $masjid)
     {
-        $masjid->nama = $request->nama_masjid;
-        $masjid->alamat = $request->alamat_masjid;
-        $masjid->geotag = $request->geotag_masjid;
-        $masjid->norek = $request->norek_masjid;
-        $masjid->deskripsi = $request->deskripsi_masjid;
-        if ($request->has('foto_masjid')) {
-            $file = $request->file('foto_masjid')->store('public/foto_masjid');
+        $masjid->nama = $request->nama;
+        $masjid->alamat = $request->alamat;
+        $masjid->geotag = $request->geotag;
+        $masjid->norek = $request->norek;
+        $masjid->deskripsi = $request->deskripsi;
+        if ($request->has('foto')) {
+            $file = $request->file('foto')->store('public/foto_masjid');
             $file = str_replace('public/', 'storage/', $file);
             $masjid->foto = $file;
         }
@@ -131,16 +131,35 @@ class MasjidController extends Controller
     }
     public function update(Request $request, Masjid $masjid)
     {
+        $rules = array(
 
-        $this->globalUpdate($request, $masjid);
-        return redirect()->route('masjid.index')->with('message', 'Data masjid berhasil diubah!');
+            'foto'       => 'max:1000|image',
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            $this->globalUpdate($request, $masjid);
+            return redirect()->route('masjid.index')->with('message', 'Data masjid berhasil diubah!');
+        }
     }
 
     public function takmirUpdate(Request $request)
     {
-        $masjid = Auth::user()->masjids->first();
-        $this->globalUpdate($request, $masjid);
-        return view('masjid.edit_masjid', ['status' => 'edit', 'masjid' => $masjid]);
+        $rules = array(
+
+            'foto'       => 'max:1000|image',
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            $masjid = Auth::user()->masjids->first();
+            $this->globalUpdate($request, $masjid);
+            return view('masjid.edit_masjid', ['status' => 'edit', 'masjid' => $masjid]);
+        }
     }
     /**
      * Remove the specified resource from storage.

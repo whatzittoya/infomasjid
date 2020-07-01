@@ -17,4 +17,9 @@ class Masjid extends Model
     {
         return $this->belongsToMany('App\User', 'USER_MASJID', 'masjid_id', 'user_id')->withPivot('active_status');
     }
+
+    public function berita()
+    {
+        return $this->hasMany('App\Berita', 'berita_id');
+    }
 }
