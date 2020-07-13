@@ -9,7 +9,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title -->
-    <title>Appy App Landing Template.</title>
+    <title>Selamat datang di InfoMasjid.</title>
     <!-- Place favicon.ico in the root directory -->
     <link rel="apple-touch-icon" href="{{asset('appy/images/apple-touch-icon.png')}}">
     <link rel="shortcut icon" type="image/ico" href="{{asset('appy/images/favicon.ico')}}" />
