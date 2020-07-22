@@ -70,10 +70,10 @@
                 </div>
                 <div class="col-xs-12 col-md-7">
                     <div class="space-80 hidden-xs"></div>
-                    <h1 class="wow fadeInUp" data-wow-delay="0.4s">Start your amazing stuff through appy.</h1>
+                    <h1 class="wow fadeInUp" data-wow-delay="0.4s">Beramal untuk Masjid dari Smartphone Anda</h1>
                     <div class="space-20"></div>
                     <div class="desc wow fadeInUp" data-wow-delay="0.6s">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiing elit, sed do eiusmod tempor incididunt ut labore et laborused sed do eiusmod tempor incididunt ut labore et laborused.</p>
+                        <p>Segera download dan install aplikasi infomasjid di smartphone anda ! hadir saat ini beramal untuk masjid di ujung jari anda. Dapatkan juga beberapa fitur menarik dari aplikasi info masjid.</p>
                     </div>
                     <div class="space-20"></div>
                     <a href="#" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-download"></i>Download App</a>
@@ -90,11 +90,11 @@
                     <div class="page-title text-center">
                         <img src="{{asset('appy/images/about-logo.png')}}" alt="About Logo">
                         <div class="space-20"></div>
-                        <h5 class="title">About Appy</h5>
+                        <h5 class="title">Tentang Kami</h5>
                         <div class="space-30"></div>
-                        <h3 class="blue-color">A beautiful app for consectetur adipisicing elit, sed do eiusmod tempor incididunt ut mollit anim id est laborum. Sedut perspiciatis unde omnis. </h3>
+                        <h3 class="blue-color">Info Masjid Hadir dari Umat dan Untuk Umat </h3>
                         <div class="space-20"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiing elit, sed do eiusmod tempor incididunt ut labore et laborused sed do eiusmod tempor incididunt ut labore et laborused.</p>
+                        <p>Teknologi smartphone semakin berkembang, sehingga aplikasi-aplikasi yang dijalankan diatas smartphone juga begitu banyak di develop oleh pengembang. Kegiatan sehari-sehari juga tidak terlepas melibatkan perangkat smartphone dan aplikasinya sehingga membuat masyarakat menjadi tergantung dengan teknologi seperti ini. Bagaimana untuk menjawab kebutuhan masjid dan umat sehingga memudahkan terwujud, diperlukan suatu aplikasi yang dapat menjembatani kebutuhan masjid dan umat.</p>
                     </div>
                 </div>
             </div>
@@ -102,7 +102,7 @@
     </section>
     <!-- About-Area-End -->
     <!-- Progress-Area -->
-    <section class="progress-area gray-bg" id="progress_page">
+    {{-- <section class="progress-area gray-bg" id="progress_page">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-6">
@@ -155,10 +155,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Video-Area-End -->
     <!-- Feature-Area -->
-    <section class="feature-area section-padding-top" id="features_page">
+    {{-- <section class="feature-area section-padding-top" id="features_page">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -230,7 +230,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Feature-Area-End -->
     <!-- Testimonial-Area -->
     <section class="testimonial-area" id="testimonial_page">
@@ -325,7 +325,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-5 col-lg-3">
                     <div class="page-title">
-                        <h5 class="white-color title wow fadeInUp" data-wow-delay="0.2s">Screenshots</h5>
+                        <h5 class="white-color title wow fadeInUp" data-wow-delay="0.2s">Galeri Aplikasi</h5>
                         <div class="space-10"></div>
                         <h3 class="white-color wow fadeInUp" data-wow-delay="0.4s">Screenshot 01</h3>
                     </div>
@@ -346,7 +346,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
                     <div class="page-title">
-                        <h5 class="title wow fadeInUp" data-wow-delay="0.2s">Our features</h5>
+                        <h5 class="title wow fadeInUp" data-wow-delay="0.2s">Fitur-Fitur Aplikasi</h5>
                         <div class="space-10"></div>
                         <h3 class="dark-color wow fadeInUp" data-wow-delay="0.4s">Aour Approach of Design is Prety Simple and Clear</h3>
                     </div>
@@ -363,7 +363,7 @@
                         <div class="box-icon">
                             <i class="lnr lnr-clock"></i>
                         </div>
-                        <h4>Easy Notifications</h4>
+                        <h4>Melihat Deskripsi Masjid</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
                     </div>
                     <div class="space-50"></div>
@@ -371,7 +371,7 @@
                         <div class="box-icon">
                             <i class="lnr lnr-laptop-phone"></i>
                         </div>
-                        <h4>Fully Responsive</h4>
+                        <h4>Melihat Info Masjid</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
                     </div>
                     <div class="space-50"></div>
@@ -379,7 +379,7 @@
                         <div class="box-icon">
                             <i class="lnr lnr-cog"></i>
                         </div>
-                        <h4>Editable Layout</h4>
+                        <h4>Melihat Kajian Masjid</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
                     </div>
                 </div>
@@ -410,7 +410,7 @@
     <!-- Download-Area-End -->
   
     <!--Questions-Area -->
-    <section id="questions_page" class="questions-area section-padding">
+    {{-- <section id="questions_page" class="questions-area section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -465,7 +465,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--Questions-Area-End -->
     <!-- Subscribe-Form -->
     <div class="subscribe-area section-padding">
