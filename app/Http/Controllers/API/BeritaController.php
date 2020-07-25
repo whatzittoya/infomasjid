@@ -16,7 +16,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $berita = Berita::select('berita_id', 'kategori_berita', 'judul', 'tgl_berita', 'masjid_id')->with('masjids:masjid_id,nama')->get();
+        $berita = Berita::select('berita_id', 'kategori_berita', 'judul', 'tgl_berita', 'masjid_id')->with('masjids:masjid_id,nama,foto')->get();
         return response()->json($berita, 200);
     }
 
