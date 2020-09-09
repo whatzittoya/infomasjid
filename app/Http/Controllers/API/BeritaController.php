@@ -25,6 +25,13 @@ class BeritaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function searchable(Request $request)
+    {
+        // search database, with result, list on page, with links to products,
+        $berita = Berita::select('berita_id', 'kategori_berita', 'judul', 'tgl_berita', 'masjid_id')->with('masjids:masjid_id,nama,foto')->where('judul', 'like', '%' . $request->search . '%')->get();
+        return response()->json($berita, 200);
+    }
     public function create()
     {
         //
