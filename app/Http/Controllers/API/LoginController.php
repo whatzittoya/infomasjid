@@ -53,7 +53,7 @@ class LoginController extends Controller
             $user_device->user_id = $user->id;
             $user_device->device_id = $device_id;
             $user_device->save();
-            return response()->json(array('result' => 'choose_mesjid'), 200);
+            return response()->json(array('result' => 'choose_mesjid', 'user' => $user_device), 200);
         }
     }
     /**
