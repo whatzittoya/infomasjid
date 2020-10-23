@@ -78,16 +78,19 @@
                         <th>No</th>
                         <th>Nama Takmir</th>
                         <th>Email</th>
+                        <th>Password</th>
                         <th>Status</th>
                         <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                     
                              @foreach ($masjid->users as $index => $row)
+                                <tr>
                                 <td>{{$index+1}}</td>
                                 <td>{{$row->name}}</td>
                                 <td>{{$row->email}}</td>
+                                <td>{{$row->temp_pass}}</td>
                                 <td>{{$row->pivot->active_status ? "Aktif" : "Non-aktif"}}</td>
                                 <td>
                                     @if (Auth::user()->isAdmin())
@@ -101,8 +104,9 @@
                                     @endif
                                    @endif 
                                 </td>
-                             @endforeach
                         </tr>
+                             @endforeach
+                       
                     </tbody>
 
                 </table>

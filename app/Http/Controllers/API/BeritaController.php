@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Berita;
 use App\Http\Controllers\Controller;
-use App\Masjid;
+use App\Masjidapi as Masjid;
 use Illuminate\Http\Request;
 
 class BeritaController extends Controller

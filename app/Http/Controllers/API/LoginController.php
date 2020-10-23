@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Masjid;
+use App\Masjidapi as Masjid;
 use App\MasjidFavorit;
 use App\User;
 use App\UserDevice;

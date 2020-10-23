@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Masjid extends Model
+class Masjidapi extends Model
 {
     //
     protected $table = 'MASJID';
@@ -19,10 +19,7 @@ class Masjid extends Model
     {
         return $this->hasMany('App\Berita', 'berita_id');
     }
-       public function Users()
-    {
-        return $this->belongsToMany('App\User', 'USER_MASJID', 'masjid_id', 'user_id')->withPivot('active_status');
-    }
+ 
     public function getImageUrlAttribute()
     {
         if (isset($_SERVER['HTTPS'])) {
@@ -33,7 +30,7 @@ class Masjid extends Model
         $url = $protocol . "://" . $_SERVER['HTTP_HOST'];
         return "{$url}/{$this->foto}";
     }
-    public function UsersFollow()
+    public function Users()
     {
         return $this->belongsToMany('App\User', 'MASJID_FAVORIT', 'masjid_id', 'user_id')->withPivot(('selected'));
     }
