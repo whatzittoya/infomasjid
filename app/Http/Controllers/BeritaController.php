@@ -118,7 +118,7 @@ class BeritaController extends Controller
             //$file = $request->file('dokumen_berita')->store('public/dokumen_berita');
             // $file = str_replace('public/', 'storage/', $file);
             //$berita->url_file = $file;
-            $url=asset('img_berita/'.$image_name);
+            $url=asset('/storage/img_berita/'.$image_name);
 
             $img->removeAttribute('src');
             $img->setAttribute('src', $url);
