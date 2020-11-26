@@ -104,24 +104,25 @@ class BeritaController extends Controller
 
         foreach ($images as $k => $img) {
             $data = $img->getAttribute('src');
+            if (substr($data, 0, 5) == 'data:') {
+                list($type, $data) = explode(';', $data);
+                list(, $data)      = explode(',', $data);
+                $data = base64_decode($data);
 
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $data = base64_decode($data);
+                $image_name= time().$k.'.png';
+                //$path = public_path() . $image_name;
 
-            $image_name= time().$k.'.png';
-            //$path = public_path() . $image_name;
+                //file_put_contents($path, $data);
+                Storage::disk('public')->put("img_berita/".$image_name, $data);
 
-            //file_put_contents($path, $data);
-            Storage::disk('public')->put("img_berita/".$image_name, $data);
+                //$file = $request->file('dokumen_berita')->store('public/dokumen_berita');
+                // $file = str_replace('public/', 'storage/', $file);
+                //$berita->url_file = $file;
+                $url=asset('/storage/img_berita/'.$image_name);
 
-            //$file = $request->file('dokumen_berita')->store('public/dokumen_berita');
-            // $file = str_replace('public/', 'storage/', $file);
-            //$berita->url_file = $file;
-            $url=asset('/storage/img_berita/'.$image_name);
-
-            $img->removeAttribute('src');
-            $img->setAttribute('src', $url);
+                $img->removeAttribute('src');
+                $img->setAttribute('src', $url);
+            }
         }
         $content = $dom->saveHTML();
         return $content;
