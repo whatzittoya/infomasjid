@@ -118,7 +118,7 @@ class BeritaController extends Controller
             //$file = $request->file('dokumen_berita')->store('public/dokumen_berita');
             // $file = str_replace('public/', 'storage/', $file);
             //$berita->url_file = $file;
-            $url=asset('/storage/img_berita/'.$image_name);
+            $url=asset('img_berita/'.$image_name);
 
             $img->removeAttribute('src');
             $img->setAttribute('src', $url);
@@ -181,7 +181,8 @@ class BeritaController extends Controller
         } else {
             $berita = Berita::find($id);
             $berita->judul = $request->judul_berita;
-            $berita->kategori_berita = $request->kategori_berita;
+            $berita->kategori_berita = $this->upload($request->deskripsi_berita);
+
             $berita->deskripsi = $request->deskripsi_berita;
             $berita->masjid_id = Auth::user()->masjids->first()->masjid_id;
 
