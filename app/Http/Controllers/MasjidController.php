@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MasjidStoreRequest;
+use App\Http\Requests\MasjidUpdateRequest;
 use App\Masjid;
 use Illuminate\Http\Request;
 use app\User;
@@ -39,41 +41,30 @@ class MasjidController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MasjidStoreRequest $request)
     {
-        $rules = array(
+        $validator = $request->validated();
 
-            'email_takmir'       => 'required|email|unique:users,email',
-        );
-        $messages = [
-            'email_takmir.email' => 'Email tidak valid',
-            'email_takmir.unique' => 'Email ini sudah terdaftar silahkan pilih email lain',
-        ];
-        $validator = Validator::make($request->all(), $rules, $messages);
-        if ($validator->fails()) {
+   
+        $masjid = new Masjid;
+        $masjid->nama = $request->nama_masjid;
+        $masjid->alamat = $request->alamat_masjid;
+        $masjid->geotag = $request->geotag_masjid;
+        $masjid->save();
 
-            return redirect()->back()->withErrors($validator)->withInput();
-        } else {
-            $masjid = new Masjid;
-            $masjid->nama = $request->nama_masjid;
-            $masjid->alamat = $request->alamat_masjid;
-            $masjid->geotag = $request->geotag_masjid;
-            $masjid->save();
+        $user = new User();
+        $user->name = $request->nama_takmir;
+        $user->email = $request->email_takmir;
+        $password = $this->generatePassword();
 
-            $user = new User();
-            $user->name = $request->nama_takmir;
-            $user->email = $request->email_takmir;
-            $password = $this->generatePassword();
+        $user->password = bcrypt($password);
+        $user->user_role = 'takmir';
+        $user->temp_pass = $password;
+        $user->save();
 
-            $user->password = bcrypt($password);
-            $user->user_role = 'takmir';
-            $user->temp_pass = $password;
-            $user->save();
+        $masjid->users()->attach($user->id);
 
-            $masjid->users()->attach($user->id);
-
-            return redirect()->route('masjid.index')->with('message', 'Data masjid berhasil disimpan!');
-        }
+        return redirect()->route('masjid.index')->with('message', 'Data masjid berhasil disimpan!');
     }
 
     /**
@@ -127,39 +118,29 @@ class MasjidController extends Controller
             $masjid->foto = $file;
         }
 
-        $masjid->update();
+        $masjid->save();
     }
-    public function update(Request $request, Masjid $masjid)
+    public function update(MasjidUpdateRequest $request, Masjid $masjid)
     {
         $rules = array(
 
             'foto'       => 'max:1000|image',
         );
 
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        } else {
-            $this->globalUpdate($request, $masjid);
-            return redirect()->route('masjid.index')->with('message', 'Data masjid berhasil diubah!');
-        }
+        $validator = $request->validate();
+
+      
+        $this->globalUpdate($request, $masjid);
+        return redirect()->route('masjid.index')->with('message', 'Data masjid berhasil diubah!');
     }
 
-    public function takmirUpdate(Request $request)
+    public function takmirUpdate(MasjidUpdateRequest $request)
     {
-        $rules = array(
-
-            'foto'       => 'max:1000|image',
-        );
-
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        } else {
-            $masjid = Auth::user()->masjids->first();
-            $this->globalUpdate($request, $masjid);
-            return view('masjid.edit_masjid', ['status' => 'edit', 'masjid' => $masjid]);
-        }
+        $validator = $request->validate();
+       
+        $masjid = Auth::user()->masjids->first();
+        $this->globalUpdate($request, $masjid);
+        return view('masjid.edit_masjid', ['status' => 'edit', 'masjid' => $masjid]);
     }
     /**
      * Remove the specified resource from storage.
@@ -169,7 +150,6 @@ class MasjidController extends Controller
      */
     public function destroy(Masjid $masjid)
     {
-
         $masjid->delete();
         return redirect()->back()->with('message', "Data berhasil dihapus!");
     }

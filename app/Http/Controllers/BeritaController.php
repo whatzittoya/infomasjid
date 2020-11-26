@@ -7,6 +7,7 @@ use App\Kategori;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class BeritaController extends Controller
@@ -18,7 +19,6 @@ class BeritaController extends Controller
      */
     public function index()
     {
-
         if (Auth::user()->isTakmir()) {
             $masjid_id = Auth::user()->masjids->first()->masjid_id;
 
@@ -65,13 +65,12 @@ class BeritaController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
-
             return redirect()->back()->withErrors($validator)->withInput();
         } else {
             $berita = new Berita();
             $berita->judul = $request->judul_berita;
             $berita->kategori_berita = $request->kategori_berita;
-            $berita->deskripsi = $request->deskripsi_berita;
+            $berita->deskripsi = $this->upload($request->deskripsi_berita);
             $berita->masjid_id = Auth::user()->masjids->first()->masjid_id;
             $date = Carbon::now();
             $berita->tgl_berita = $date->toDateTimeString();
@@ -88,6 +87,45 @@ class BeritaController extends Controller
         }
     }
 
+
+    private function upload($content)
+    {
+        $dom = new \DomDocument();
+        // $content=$this->addNamespaces($content);
+        $dom->loadHTML(
+            $content,
+            LIBXML_HTML_NOIMPLIED | # Make sure no extra BODY
+            LIBXML_HTML_NODEFDTD |  # or DOCTYPE is created
+            LIBXML_NOERROR |        # Suppress any errors
+            LIBXML_NOWARNING        # or warnings about prefixes.
+        );
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $k => $img) {
+            $data = $img->getAttribute('src');
+
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $data = base64_decode($data);
+
+            $image_name= time().$k.'.png';
+            //$path = public_path() . $image_name;
+
+            //file_put_contents($path, $data);
+            Storage::disk('public')->put("img_berita/".$image_name, $data);
+
+            //$file = $request->file('dokumen_berita')->store('public/dokumen_berita');
+            // $file = str_replace('public/', 'storage/', $file);
+            //$berita->url_file = $file;
+            $url=asset('img_berita/'.$image_name);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $url);
+        }
+        $content = $dom->saveHTML();
+        return $content;
+    }
     /**
      * Display the specified resource.
      *
@@ -98,10 +136,8 @@ class BeritaController extends Controller
     {
         $berita = Berita::find($id);
         if (Auth::user()->isTakmir()) {
-
             $breadcrumb = 'takmir_view_berita';
         } else {
-
             $breadcrumb = 'admin_view_berita';
         }
 
@@ -141,7 +177,6 @@ class BeritaController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
-
             return redirect()->back()->withErrors($validator)->withInput();
         } else {
             $berita = Berita::find($id);

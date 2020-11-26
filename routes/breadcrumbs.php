@@ -1,5 +1,8 @@
 <?php
 // Home
+
+use App\Masjid;
+
 Breadcrumbs::for('home', function ($trail) {
     $trail->push('Home', route('home'));
 });
@@ -8,6 +11,8 @@ Breadcrumbs::for('masjid', function ($trail) {
     $trail->parent('home');
     $trail->push('Masjid', route('masjid.index'));
 });
+
+
 Breadcrumbs::for('kategori', function ($trail) {
     $trail->parent('home');
     $trail->push('Kategori', route('kategori.index'));
@@ -22,8 +27,13 @@ Breadcrumbs::for('edit_kategori', function ($trail, $kategori) {
 });
 Breadcrumbs::for('edit_masjid', function ($trail, $masjid) {
     $trail->parent('masjid');
-    $trail->push('Ubah Masjid', route('masjid.index', $masjid->masjid_id));
+    $trail->push('Ubah Masjid', route('masjid.edit', $masjid->masjid_id));
 });
+Breadcrumbs::for('add_masjid_takmir', function ($trail, $masjid_id, $masjid_takmir=null) {
+    $trail->parent('edit_masjid', Masjid::find($masjid_id));
+    $trail->push($masjid_takmir?'Ubah Takmir':'Tambah Takmir', route('takmir.create', $masjid_id));
+});
+
 
 Breadcrumbs::for('new_masjid', function ($trail) {
     $trail->parent('masjid');

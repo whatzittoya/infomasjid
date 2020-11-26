@@ -76,6 +76,8 @@
 @stop
 
 @section('auth_footer')
+  @php( $password_reset_url = '' )
+    @php( $register_url =  '' )
     {{-- Password reset link --}}
     @if($password_reset_url)
         <p class="my-0">

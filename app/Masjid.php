@@ -3,10 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class Masjid extends Model
 {
     //
+    use SoftDeletes;
     protected $table = 'MASJID';
     protected $primaryKey = 'masjid_id';
     protected $appends = ['image_url'];
@@ -14,12 +18,26 @@ class Masjid extends Model
     const CREATED_AT = 'insert_date';
     const UPDATED_AT = 'update_date';
 
-
+    protected static function boot()
+    {
+        parent::boot();
+        Masjid::creating(function ($model) {
+            $model->insert_by = Auth::user()->id;
+        });
+        Masjid::updating(function ($model) {
+            $model->update_by = Auth::user()->id;
+        });
+        Masjid::deleting(function ($model) {
+            $model->deleted_by = Auth::user()->id;
+            $model->save();
+            Log::info('deleted');
+        });
+    }
     public function berita()
     {
         return $this->hasMany('App\Berita', 'berita_id');
     }
-       public function Users()
+    public function Users()
     {
         return $this->belongsToMany('App\User', 'USER_MASJID', 'masjid_id', 'user_id')->withPivot('active_status');
     }

@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-
     public function login(Request $request)
     {
         $device_id = $request->device_id;
@@ -31,7 +30,6 @@ class LoginController extends Controller
                 $query->where('user_id', $user_id);
             })->get();
             $masjid = $masjid->map(function ($item) {
-
                 $item->selected = $item->Users[0]->selected;
                 unset($item->Users);
                 return $item;
@@ -53,7 +51,7 @@ class LoginController extends Controller
             $user_device->user_id = $user->id;
             $user_device->device_id = $device_id;
             $user_device->save();
-            return response()->json(array('result' => 'choose_mesjid', 'user' => $user_device), 200);
+            return response()->json(array('result' => 'choose_mesjid', 'user' => $user), 200);
         }
     }
     /**

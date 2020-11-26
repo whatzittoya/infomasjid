@@ -61,4 +61,8 @@ class User extends Authenticatable
         }
         return false;
     }
+    public function takmir()
+    {
+        return $this->hasMany('App\Takmir');
+    }
 }

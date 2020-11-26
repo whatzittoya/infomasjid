@@ -5,7 +5,7 @@
                 Konfirmasi <span class="name_action"></span> {{$name}}
             </div>
             <div class="modal-body">
-                Apakah anda yakin akan <span class="name_action"></span> data <span id="name_target"></span>?
+                Apakah anda yakin akan <span id="name_action"></span> data <span id="name_target"></span>?
             </div>
             <div class="modal-footer">
                 
@@ -21,13 +21,13 @@
     </div>
 </div>
 
-
+@section('js_include')
     <script> 
     
     $('#custom-modal').on('show.bs.modal', function(e) {
- 
     $(this).find('#form_action').attr('action', $(e.relatedTarget).data('href'));
     $(this).find('#name_target').text( $(e.relatedTarget).data('name'));
-    $(this).find('.name_action').text( $(e.relatedTarget).data('action'));
+    $(this).find('#name_action').text( $(e.relatedTarget).data('action'));
 });
      </script>
+@stop

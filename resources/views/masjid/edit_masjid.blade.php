@@ -71,7 +71,9 @@
                
                 </div>
                {{ Form::close() }}
-      
+               <div class="row col-md-12">
+      <a href="{{ route('takmir.create', $masjid->masjid_id)}}" class="btn btn-primary m-3">Tambah Takmir</a>
+               </div>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -95,11 +97,11 @@
                                 <td>
                                     @if (Auth::user()->isAdmin())
                                     <button class="btn btn-primary btn-sm" data-href="{{ route('takmir.reset', $row->id)}}" data-name="{{$row->name}}" data-action="Reset Password" data-toggle="modal" data-target="#custom-modal">Reset Password</button>
-                                    <a href="" class="btn btn-warning btn-sm">Ubah</a>
+                                    <a href="{{ route('takmir.edit', ['mid'=>$masjid->masjid_id,'tid'=>$row->id])}}" class="btn btn-warning btn-sm">Ubah</a>
                                     @if ($row->pivot->active_status)
-                                        <button class="btn btn-danger btn-sm" data-href="{{ route('masjid.destroy', $row)}}" data-name="{{$row->name}}" data-action="Deaktivasi Akun" data-toggle="modal" data-target="#custom-modal">Deaktivasi</button>
+                                        <button class="btn btn-danger btn-sm" data-href="{{ route('takmir.activate', ['mid'=>$masjid->masjid_id,'tid'=>$row->id])}}" data-name="{{$row->name}}" data-action="takmir Akun" data-toggle="modal" data-target="#custom-modal">Deaktivasi</button>
                                         @else
-                                        <button class="btn btn-success btn-sm" data-href="{{ route('masjid.destroy', $row)}}" data-name="{{$row->name}}" data-action="Aktivasi Akun" data-toggle="modal" data-target="#custom-modal">Aktivasi</button>
+                                        <button class="btn btn-success btn-sm" data-href="{{ route('takmir.activate', ['mid'=>$masjid->masjid_id,'tid'=>$row->id])}}" data-name="{{$row->name}}" data-action="Aktivasi Akun" data-toggle="modal" data-target="#custom-modal">Aktivasi</button>
                                         
                                     @endif
                                    @endif 
