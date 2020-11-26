@@ -181,9 +181,9 @@ class BeritaController extends Controller
         } else {
             $berita = Berita::find($id);
             $berita->judul = $request->judul_berita;
-            $berita->kategori_berita = $this->upload($request->deskripsi_berita);
+            $berita->kategori_berita = $request->kategori_berita;
+            $berita->deskripsi =  $this->upload($request->deskripsi_berita);
 
-            $berita->deskripsi = $request->deskripsi_berita;
             $berita->masjid_id = Auth::user()->masjids->first()->masjid_id;
 
             if ($request->has('dokumen_berita')) {
