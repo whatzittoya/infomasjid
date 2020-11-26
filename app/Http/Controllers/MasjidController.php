@@ -127,7 +127,7 @@ class MasjidController extends Controller
             'foto'       => 'max:1000|image',
         );
 
-        $validator = $request->validate();
+        $validator = $request->validated();
 
       
         $this->globalUpdate($request, $masjid);
