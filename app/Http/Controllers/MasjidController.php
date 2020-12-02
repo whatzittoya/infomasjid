@@ -136,7 +136,7 @@ class MasjidController extends Controller
 
     public function takmirUpdate(MasjidUpdateRequest $request)
     {
-        $validator = $request->validate();
+        $validator = $request->validated();
        
         $masjid = Auth::user()->masjids->first();
         $this->globalUpdate($request, $masjid);
