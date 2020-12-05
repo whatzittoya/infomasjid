@@ -35,10 +35,12 @@ class LoginController extends Controller
                 return $item;
             });
             $user = User::find($user_id);
+            $success['token'] =  $user->createToken('nApp')->accessToken;
+
             if (count($masjid) == 0) {
-                return response()->json(array('result' => 'choose_mesjid_exists', 'user' => $user), 200);
+                return response()->json(array('result' => 'choose_mesjid_exists', 'user' => $user,'success'=>$success), 200);
             } else {
-                return response()->json(array('result' => 'exists', 'user' => $user, 'masjid' => $masjid), 200);
+                return response()->json(array('result' => 'exists', 'user' => $user, 'masjid' => $masjid,'success'=>$success), 200);
             }
         } else {
             $user = new User();
@@ -51,7 +53,8 @@ class LoginController extends Controller
             $user_device->user_id = $user->id;
             $user_device->device_id = $device_id;
             $user_device->save();
-            return response()->json(array('result' => 'choose_mesjid', 'user' => $user), 200);
+            $success['token'] =  $user->createToken('nApp')->accessToken;
+            return response()->json(array('result' => 'choose_mesjid', 'user' => $user,'success'=>$success), 200);
         }
     }
     /**
