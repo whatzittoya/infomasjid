@@ -20,7 +20,7 @@
             <th>No</th>
             <th>Nama Masjid</th>
             <th>Alamat</th>
-            <th>Takmir</th>
+            <th>Musharaf</th>
             <th>Aksi</th>
         </tr>
       </thead>

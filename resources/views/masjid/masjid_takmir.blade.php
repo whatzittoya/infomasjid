@@ -1,12 +1,12 @@
 @extends('adminlte::page')
 
-@section('title', 'Masjid Takmir')
+@section('title', 'Masjid Musharaf')
 
     @if($status == 'new')
-        @php( $header='Tambah Takmir')
+        @php( $header='Tambah Musharaf')
         @php( $button='Simpan')
     @elseif($status=='edit')
-        @php(  $header='Ubah Takmir')
+        @php(  $header='Ubah Musharaf')
         @php(  $button='Ubah')
     @endif 
 
@@ -39,7 +39,7 @@
 
                 <div class="card-body"> 
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Nama Takmir</label>
+                    <label for="exampleInputEmail1">Nama Musharaf</label>
                    {{ Form::text('name', Input::old('name'),['class'=>'form-control','placeholder'=>'Nama Takmir','name'=>'name']) }}
                   </div>
                    <div class="form-group">

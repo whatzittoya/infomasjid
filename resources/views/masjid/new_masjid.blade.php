@@ -41,13 +41,13 @@
                   </div>
                   @if(!isset($masjid))
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Nama Takmir</label>
-                     {{ Form::text('nama_takmir', Input::old('nama_takmir'),['class'=>'form-control','placeholder'=>'Nama Takmir']) }}
+                    <label for="exampleInputEmail1">Nama Musharaf</label>
+                     {{ Form::text('nama_takmir', Input::old('nama_takmir'),['class'=>'form-control','placeholder'=>'Nama Musharaf']) }}
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email Takmir</label>
+                    <label for="exampleInputEmail1">Email Musharaf</label>
                     
-                     {{ Form::email('email_takmir', Input::old('email_takmir'),['class'=>'form-control','placeholder'=>'Email Takmir']) }}
+                     {{ Form::email('email_takmir', Input::old('email_takmir'),['class'=>'form-control','placeholder'=>'Email Musharaf']) }}
                   </div>
                  @endif
                 </div>

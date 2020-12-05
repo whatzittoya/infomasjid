@@ -65,7 +65,7 @@
             <div class="row">
                 <div class="col-xs-12 hidden-sm col-md-5">
                     <figure class="mobile-image wow fadeInUp" data-wow-delay="0.2s">
-                        <img src="{{asset('appy/images/header-mobile.png')}}" alt="">
+                        <img src="{{asset('img/screen1.jpeg')}}" alt="">
                     </figure>
                 </div>
                 <div class="col-xs-12 col-md-7">
@@ -76,7 +76,8 @@
                         <p>Segera download dan install aplikasi infomasjid di smartphone anda ! hadir saat ini beramal untuk masjid di ujung jari anda. Dapatkan juga beberapa fitur menarik dari aplikasi info masjid.</p>
                     </div>
                     <div class="space-20"></div>
-                    <a href="#" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-download"></i>Download App</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.riausoftwarehouse.infomasjid
+" class="bttn-white wow fadeInUp" data-wow-delay="0.8s"><i class="lnr lnr-download"></i>Download App</a>
                 </div>
             </div>
         </div>
@@ -307,20 +308,12 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 gallery-slider">
                     <div class="gallery-slide">
-                        <div class="item"><img src="{{asset('appy/images/gallery-1.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-2.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-3.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-4.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-1.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-2.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-3.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-1.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-2.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-3.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-4.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-1.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-2.jpg')}}" alt=""></div>
-                        <div class="item"><img src="{{asset('appy/images/gallery-3.jpg')}}" alt=""></div>
+                        <div class="item"><img src="{{asset('img/screen1.jpeg')}}" alt=""></div>
+                        <div class="item"><img src="{{asset('img/screen2.jpeg')}}" alt=""></div>
+                        <div class="item"><img src="{{asset('img/screen3.jpeg')}}" alt=""></div>
+                        <div class="item"><img src="{{asset('img/screen4.jpeg')}}" alt=""></div>
+                        <div class="item"><img src="{{asset('img/screen5.jpeg')}}" alt=""></div>
+                        <div class="item"><img src="{{asset('img/screen6.jpeg')}}" alt=""></div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-5 col-lg-3">
@@ -393,7 +386,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 hidden-sm">
                     <figure class="mobile-image">
-                        <img src="{{asset('appy/images/download-image.png')}}" alt="">
+                        <img src="{{asset('img/download.png')}}" alt="">
                     </figure>
                 </div>
                 <div class="col-xs-12 col-md-6 section-padding">
@@ -401,8 +394,9 @@
                     <div class="space-20"></div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam possimus eaque magnam eum praesentium unde.</p>
                     <div class="space-60"></div>
-                    <a href="#" class="bttn-white sq"><img src="{{asset('appy/images/apple-icon.png')}}" alt="apple icon"> Apple Store</a>
-                    <a href="#" class="bttn-white sq"><img src="{{asset('appy/images/play-store-icon.png')}}" alt="Play Store Icon"> Play Store</a>
+                  
+                    <a href="https://play.google.com/store/apps/details?id=com.riausoftwarehouse.infomasjid
+" class="bttn-white sq"><img src="{{asset('appy/images/play-store-icon.png')}}" alt="Play Store Icon"> Play Store</a>
                 </div>
             </div>
         </div>
