@@ -29,15 +29,21 @@ Route::get('berita/search', 'API\BeritaController@searchable');
     Route::apiResource('masjid', 'API\MasjidController');
     Route::get('about', 'API\AboutController@index');
 
-Route::middleware('auth:api')->prefix("v2")->group(function () {
-    Route::get('berita/search', 'API\BeritaController@searchable');
-    Route::apiResource('berita', 'API\BeritaController');
 
-    Route::get('masjid/search', 'API\MasjidController@searchable');
 
-    Route::post('masjid/follow', 'API\MasjidController@follow');
-    Route::post('masjid/follow/select', 'API\MasjidController@select');
-    Route::post('masjid/unfollow', 'API\MasjidController@unfollow');
-    Route::apiResource('masjid', 'API\MasjidController');
-    Route::get('about', 'API\AboutController@index');
+Route::prefix("v2")->group(function () {
+    Route::post('login', 'API\LoginController@login');
+
+    Route::middleware('auth:api')->group(function () {
+        Route::get('berita/search', 'API\BeritaController@searchable');
+        Route::apiResource('berita', 'API\BeritaController');
+
+        Route::get('masjid/search', 'API\MasjidController@searchable');
+
+        Route::post('masjid/follow', 'API\MasjidController@follow');
+        Route::post('masjid/follow/select', 'API\MasjidController@select');
+        Route::post('masjid/unfollow', 'API\MasjidController@unfollow');
+        Route::apiResource('masjid', 'API\MasjidController');
+        Route::get('about', 'API\AboutController@index');
+    });
 });
