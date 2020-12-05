@@ -44,6 +44,6 @@ Route::prefix("v2")->group(function () {
         Route::post('masjid/follow/select', 'API\MasjidController@select');
         Route::post('masjid/unfollow', 'API\MasjidController@unfollow');
         Route::apiResource('masjid', 'API\MasjidController');
-        Route::get('about', 'API\AboutController@index');
+        Route::post('about', 'API\AboutController@index');
     });
 });
