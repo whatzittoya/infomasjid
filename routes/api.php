@@ -23,7 +23,9 @@ Route::get('berita/search', 'API\BeritaController@searchable');
 Route::apiResource('berita', 'API\BeritaController');
 
 Route::get('masjid/search', 'API\MasjidController@searchable');
+
 Route::post('masjid/follow', 'API\MasjidController@follow');
 Route::post('masjid/follow/select', 'API\MasjidController@select');
 Route::post('masjid/unfollow', 'API\MasjidController@unfollow');
 Route::apiResource('masjid', 'API\MasjidController');
+Route::get('about', 'API\AboutController@index');
