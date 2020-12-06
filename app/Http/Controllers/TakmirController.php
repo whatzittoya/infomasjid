@@ -78,7 +78,7 @@ class TakmirController extends Controller
         $objUser->password =  $password;
 
         try {
-            Mail::to('$masjid_takmir->email')->send(new UserRegistered($objUser));
+            Mail::to($masjid_takmir->email)->send(new UserRegistered($objUser));
         } catch (Exception $ex) {
             $error = new ErrorLog();
             $error->name = "Mail registration";
@@ -89,7 +89,7 @@ class TakmirController extends Controller
             $error->save();
         }
 
-        return redirect()->route('masjid.edit', $mid)->with('message', 'Data musharaf berhasil disimpan!');
+        return redirect()->route('masjid.edit', $mid)->with('message', 'Data takmir berhasil disimpan!');
     }
 
     /**
