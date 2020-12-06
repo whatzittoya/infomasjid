@@ -67,15 +67,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                      
                              @foreach ($masjid->users as $index => $row)
+                               <tr>
                                 <td>{{$index+1}}</td>
                                 <td>{{$row->name}}</td>
                                 <td>{{$row->email}}</td>
                                 <td>{{$row->pivot->active_status ? "Aktif" : "Non-aktif"}}</td>
+                        </tr>
                                
                              @endforeach
-                        </tr>
                     </tbody>
 
                 </table>

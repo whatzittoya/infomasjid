@@ -499,7 +499,7 @@
                             <div class="box-icon">
                                 <span class="lnr lnr-map-marker"></span>
                             </div>
-                            <p>8-54 Paya Lebar Square <br /> 60 Paya Lebar Roa SG, Singapore</p>
+                            <p>Perumahan Pandau Permai <br /> Jl Mahang Raya Blok C 25 No.6, Pekanbaru</p>
                         </div>
                         <div class="space-30 hidden visible-xs"></div>
                     </div>
@@ -508,7 +508,7 @@
                             <div class="box-icon">
                                 <span class="lnr lnr-phone-handset"></span>
                             </div>
-                            <p>+65 93901336 <br /> +65 93901337</p>
+                            <p>0812-3431-7274</p>
                         </div>
                         <div class="space-30 hidden visible-xs"></div>
                     </div>
@@ -517,7 +517,7 @@
                             <div class="box-icon">
                                 <span class="lnr lnr-envelope"></span>
                             </div>
-                            <p>yourmail@gmail.com <br /> backpiper.com@gmail.com
+                            <p> cs.infomasjid@gmail.com
                             </p>
                         </div>
                     </div>
