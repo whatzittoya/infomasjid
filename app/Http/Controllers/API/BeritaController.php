@@ -16,7 +16,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $berita = Berita::select('berita_id', 'kategori_berita', 'judul', 'tgl_berita', 'masjid_id')->with('masjids:masjid_id,nama,foto')->get();
+        $berita = Berita::select('berita_id', 'kategori_berita', 'judul', 'tgl_berita', 'masjid_id')->with('masjids:masjid_id,nama,foto')->orderBy('tgl_berita', 'desc')->get();
         return response()->json($berita, 200);
     }
 
@@ -29,7 +29,7 @@ class BeritaController extends Controller
     public function searchable(Request $request)
     {
         // search database, with result, list on page, with links to products,
-        $berita = Berita::select('berita_id', 'kategori_berita', 'judul', 'tgl_berita', 'masjid_id')->with('masjids:masjid_id,nama,foto')->where('judul', 'like', '%' . $request->search . '%')->get();
+        $berita = Berita::select('berita_id', 'kategori_berita', 'judul', 'tgl_berita', 'masjid_id')->with('masjids:masjid_id,nama,foto')->where('judul', 'like', '%' . $request->search . '%')->orderBy('tgl_berita', 'desc')->get();
         return response()->json($berita, 200);
     }
     public function create()
