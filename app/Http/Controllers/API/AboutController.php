@@ -18,6 +18,10 @@ class AboutController extends Controller
         <p>email: cs.infomasjid@gmail.com</p>
 
         <p>Website: <a href="http://infomasjid.my.id/">infomasjid.my.id</a></p>
+
+        <p>Jika ada masukan, saran, atau kritik bisa menghubungi kami via Whatsapp dibawah</p>
+        
+  
         ';
         return response()->json(array("about"=>$about), 200);
     }
