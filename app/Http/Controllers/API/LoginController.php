@@ -20,6 +20,7 @@ class LoginController extends Controller
         }
         $found = UserDevice::where('device_id', $request->device_id)->first();
         if ($found) {
+            $found->login()->create();
             $user_id = $found->user_id;
             // $masjid = Masjid::select('masjid_id', 'nama', 'alamat', 'foto')->with('Users:MASJID_FAVORIT.selected')->whereHas('Users', function ($query) use ($user_id) {
             //     $query->where('user_id', $user_id);
