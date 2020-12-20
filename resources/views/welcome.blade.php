@@ -549,6 +549,7 @@
                 </div>
             </div>
         </div>
+               <a href="whatsapp://send?phone=6285264612989&text=Assalamu%27alaikum%2C%20perkenalkan%20nama%20saya"><img src="http://infomasjid.my.id/img/Chat-via-whatsapp.png" width="180"></img></a>
         <!-- Footer-Bootom-End -->
     </footer>
     <!-- Footer-Area-End -->
