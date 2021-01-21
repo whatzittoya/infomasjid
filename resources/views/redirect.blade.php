@@ -13,7 +13,7 @@ var openApp = function() {
  if(page==='berita'){
      prefix="BeritaShow"
  }
-  window.location.replace('exp://192.168.43.62:19000/--/'+prefix+'/{{$id}}');
+  window.location.replace('exp://192.168.43.62:19000/--/'+prefix+'?id={{$id}}');
 };
 var triggerAppOpen = function() {
   openApp();
