@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/redirect/{page}/{id}', function (Request $request) {
+    return view('redirect')->with(['page'=> $request->page,'id'=>$request->id]);
+});
 
 
 Route::get('/home', function () {
